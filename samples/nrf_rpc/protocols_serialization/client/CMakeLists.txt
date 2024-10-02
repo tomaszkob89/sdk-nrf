@@ -9,6 +9,15 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 project(protocols_serialization_client)
 
+
+
+set(TCA_TRANSPORT "RTT" CACHE STRING "TCA transport type")
+execute_process(COMMAND ctf_tca -r lib OUTPUT_VARIABLE TCA_TARGET_LIB_DIR)
+string(STRIP ${TCA_TARGET_LIB_DIR} TCA_TARGET_LIB_DIR) # strip new line character
+include(${TCA_TARGET_LIB_DIR}/CMakeLists.txt)
+target_link_libraries(app PRIVATE ctfTargetComm)
+
+
 # NORDIC SDK APP START
 target_sources(app PRIVATE
     src/main.c
