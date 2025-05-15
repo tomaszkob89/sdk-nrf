@@ -290,7 +290,7 @@ manifest:
       remote: mrt
       repo-path: hot_potato.git
       path: nrf/subsys/mpsl/fem/hot_potato
-      revision: develop
+      revision: clang_fix
 
   # West-related configuration for the nrf repository.
   self:
